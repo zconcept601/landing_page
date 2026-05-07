@@ -48,6 +48,7 @@
     h2 {
       clip-path: inset(0 100% 0 0);
       transition: clip-path 5s cubic-bezier(0.16, 1, 0.3, 1);
+      font-size: 2.4rem;
     }
     h2.visible {
       clip-path: inset(0 0% 0 0);
@@ -74,11 +75,11 @@
       background: var(--red);
       color: white;
       padding: 18px 28px;
-      font-size: 1.25rem;
+      font-size: 1.35rem;
       box-shadow: 0 10px 25px rgba(229, 46, 46, 0.5);
       border: 1px solid rgba(255,255,255,0.15);
       width: fit-content;
-      animation: softGlow 2.5s ease-in-out infinite; /* pulsation douce au lieu de shake */
+      animation: softGlow 2.5s ease-in-out infinite;
     }
 
     @keyframes softGlow {
@@ -97,11 +98,402 @@
       background: transparent;
       color: var(--white);
       border: 2px solid var(--white);
-      padding: 14px 24px;
-      font-size: 1rem;
+      padding: 16px 26px;
+      font-size: 1.1rem;
       font-weight: 700;
       background: rgba(255,255,255,0.05);
     }
+
+    /* Animations premium lentes (5s) */
+    .fade-up {
+      opacity: 0;
+      transform: translate3d(0, 60px, 0);
+      transition: opacity 5s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-up.visible { opacity: 1; transform: translate3d(0, 0, 0); }
+
+    .zoom-in {
+      opacity: 0;
+      transform: scale(0.88);
+      transition: opacity 5s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .zoom-in.visible { opacity: 1; transform: scale(1); }
+
+    .slide-left {
+      opacity: 0;
+      transform: translate3d(-60px, 0, 0);
+      transition: opacity 5s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .slide-left.visible { opacity: 1; transform: translate3d(0, 0, 0); }
+
+    .slide-right {
+      opacity: 0;
+      transform: translate3d(60px, 0, 0);
+      transition: opacity 5s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .slide-right.visible { opacity: 1; transform: translate3d(0, 0, 0); }
+
+    .parallax-bg {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 28px;
+      padding: 28px 24px;
+      border: 1px solid var(--border-dark);
+      transition: transform 0.25s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: #777;
+    }
+
+    .price-tag {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--orange);
+      margin: 10px 0;
+    }
+
+    /* IMAGES STYLE STORY - TRÈS GRANDES */
+    .unsplash-img {
+      width: 100%;
+      height: auto;
+      min-height: 320px;
+      max-height: 480px;
+      object-fit: cover;
+      border-radius: 28px;
+      margin: 20px 0;
+      border: 1px solid #333;
+      will-change: transform;
+    }
+    
+    /* Hero image encore plus imposante */
+    .hero-image {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      border-radius: 32px;
+      margin: 18px 0;
+    }
+
+    .floating-img {
+      animation: floatImage 4s ease-in-out infinite;
+    }
+
+    @keyframes floatImage {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
+    /* Sticky CTA + WhatsApp */
+    .sticky-cta {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 999;
+      width: calc(100% - 36px);
+      max-width: 420px;
+      background: var(--red);
+      color: white;
+      font-weight: 800;
+      font-size: 1.3rem;
+      padding: 18px 22px;
+      border-radius: 60px;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(229,46,46,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 1px solid rgba(255,255,255,0.3);
+      backdrop-filter: blur(12px);
+      animation: stickyPulse 2.4s infinite;
+    }
+
+    @keyframes stickyPulse {
+      0% { box-shadow: 0 12px 30px rgba(229,46,46,0.6); }
+      50% { box-shadow: 0 8px 22px rgba(229,46,46,1); }
+      100% { box-shadow: 0 12px 30px rgba(229,46,46,0.6); }
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 100px;
+      right: 20px;
+      background: #25D366;
+      color: white;
+      border-radius: 50%;
+      width: 68px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 38px;
+      box-shadow: 0 10px 28px rgba(37,211,102,0.7);
+      z-index: 1000;
+      text-decoration: none;
+      border: 2px solid white;
+      transition: 0.2s;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.08);
+    }
+
+    .badge-urgence {
+      background: var(--orange);
+      color: black;
+      font-weight: 800;
+      padding: 10px 20px;
+      border-radius: 40px;
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 14px 0;
+    }
+
+    .countdown {
+      background: #1e1e1e;
+      border: 1px solid var(--red);
+      border-radius: 18px;
+      padding: 14px 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--orange);
+      margin: 16px 0;
+    }
+
+    /* STYLE ACCORDEON FAQ */
+    details {
+      background:#1a1a1a;
+      border-radius:18px;
+      margin-bottom:14px;
+      overflow:hidden;
+      transition: all 0.2s;
+    }
+    details[open] {
+      border-left:4px solid var(--orange);
+    }
+    summary {
+      padding:18px 24px;
+      font-weight:800;
+      font-size: 1.1rem;
+      cursor:pointer;
+      list-style:none;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    summary::-webkit-details-marker {
+      display:none;
+    }
+    summary::after {
+      content:'▼';
+      font-size:0.9rem;
+      color:var(--orange);
+      transition:transform 0.3s;
+    }
+    details[open] summary::after {
+      transform:rotate(180deg);
+    }
+    .faq-body {
+      padding:0 24px 20px;
+      color:#bbb;
+      border-top:1px solid #2a2a2a;
+      padding-top:14px;
+      line-height:1.6;
+      font-size: 1rem;
+    }
+
+    /* TEXTES GÉNÉRAUX GROSSIS */
+    p, li, .card p, .card div, .card span, .faq-body {
+      font-size: 1.08rem;
+      line-height: 1.45;
+    }
+    
+    .hero-subtext {
+      font-size: 1.25rem;
+      margin: 12px 0 8px;
+      font-weight: 500;
+    }
+    
+    .list-item-large {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    @media (max-width: 500px) {
+      .btn-primary { font-size: 1.1rem; padding: 18px 20px; }
+      .whatsapp-float { bottom: 100px; right: 16px; width: 60px; height: 60px; font-size: 32px; }
+      h2 { font-size: 2rem; }
+      .unsplash-img { min-height: 280px; }
+      .hero-image { height: 300px; }
+      .sticky-cta { font-size: 1.1rem; padding: 14px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- HERO - fade-up -->
+    <div class="fade-up" id="hero" style="margin-top: 20px;">
+      <span class="badge-urgence">⚠️ Places limitées cette semaine | Burkina Services Connect (BSC)</span>
+      <h1 style="font-size: 3rem; line-height: 1.1; color: white;">“Vous avez du trafic mais aucun client ? On corrige ça immédiatement.”</h1>
+      <p class="hero-subtext" style="color: #dddddd;">Des landing pages conçues pour transformer vos visiteurs en acheteurs dès aujourd'hui, même si votre business ne vend rien actuellement.</p>
+      
+      <!-- IMAGE STYLE STORY TRÈS GRANDE -->
+      <div style="position: relative; overflow: hidden; border-radius: 32px; margin: 20px 0;">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Entrepreneur africain" class="hero-image parallax-bg" style="width: 100%; object-fit: cover; margin: 0; border: none;">
+      </div>
+      
+      <div class="countdown" id="timer">
+        <span>⏳</span> <span id="countdownDisplay" style="font-weight:800;">23h 59m 48s</span> <span style="color:#fff;">offre spéciale</span>
+      </div>
+      
+      <div style="display: flex; flex-direction: column; gap: 16px; margin: 12px 0 10px;">
+        <a href="#offre" class="btn btn-primary" style="width: 100%;">🔥 Créer ma landing page maintenant – à partir de 12 500 FCFA</a>
+        <a href="#questceque" class="btn btn-secondary" style="width: fit-content;">⬇️ Qu'est-ce qu'une landing page ?</a>
+      </div>
+    </div>
+
+    <!-- QU'EST-CE QU'UNE LANDING PAGE - zoom-in -->
+    <div class="zoom-in" id="questceque" style="margin: 45px 0;">
+      <div class="card" style="background: #0f0f0f; border-left: 6px solid var(--orange);">
+        <h2 style="font-size: 2.3rem; color: var(--orange); margin-bottom: 16px;">📄 C'EST QUOI UNE LANDING PAGE ?</h2>
+        <p style="font-weight: 600; font-size: 1.2rem; margin-bottom: 18px;">Une <strong>page de vente</strong> (landing page) est une page web unique conçue pour <span style="color:var(--red);">une seule mission : transformer un visiteur en client</span>.</p>
+        <div style="display: flex; flex-direction: column; gap: 16px; margin: 20px 0;">
+          <div style="display: flex; align-items: center; gap: 14px; font-size: 1.1rem;">🎯 <span>Pas de menu, pas de distraction</span></div>
+          <div style="display: flex; align-items: center; gap: 14px; font-size: 1.1rem;">💬 <span>Un message clair qui pousse à l'action</span></div>
+          <div style="display: flex; align-items: center; gap: 14px; font-size: 1.1rem;">📈 <span>Conçue pour vendre 24h/24, même sans pub</span></div>
+        </div>
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Exemple landing page" class="unsplash-img floating-img" style="height: auto; min-height: 340px;">
+        <p style="margin-top: 12px; font-weight: 700; font-size: 1.2rem;">👉 Imaginez un vendeur professionnel qui travaille pour vous jour et nuit.</p>
+      </div>
+    </div>
+
+    <!-- PROBLÈME - slide-left -->
+    <div class="slide-left" id="probleme">
+      <div style="background: #1a0a0a; border-left: 6px solid var(--red); padding: 28px 22px; border-radius: 24px;">
+        <h2 style="color: var(--red); font-size: 2.2rem; margin-bottom: 18px;">⛔ STOP AUX PERTES</h2>
+        <ul style="list-style: none; font-size: 1.2rem; font-weight: 600; display: flex; flex-direction: column; gap: 20px;">
+          <li>❌ Vous recevez des visiteurs mais aucun achat</li>
+          <li>❌ Vous perdez de l'argent tous les jours sans le savoir</li>
+          <li>❌ Votre page actuelle ne convainc pas</li>
+          <li>❌ Vos clients hésitent et disparaissent</li>
+        </ul>
+        <p style="font-weight: 800; font-size: 1.7rem; margin-top: 22px; color: var(--orange);">👉 "Chaque visite sans conversion = argent perdu"</p>
+        <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Frustration" class="unsplash-img" style="margin-top: 20px; min-height: 320px;">
+      </div>
+    </div>
+
+    <!-- SOLUTION - zoom-in (titre modifié) -->
+    <div class="zoom-in" id="solution">
+      <h2 style="font-size: 2.3rem; margin-bottom: 20px;">UNE PAGE QUI CONVAINC À VOTRE PLACE</h2>
+      <div class="card" style="background: #0f0f0f;">
+        <p style="font-weight: 700; font-size: 1.3rem; margin-bottom: 20px;">Votre nouvelle landing page :</p>
+        <div style="display: flex; flex-direction: column; gap: 18px;">
+          <div style="font-size:1.2rem;"><span style="font-size:1.8rem;">💰</span> <strong>Plus d'argent sans plus de trafic</strong> – on convertit vos visiteurs actuels</div>
+          <div style="font-size:1.2rem;"><span style="font-size:1.8rem;">📱</span> <strong>Optimisé smartphone</strong> – ça s'affiche parfaitement partout en Afrique</div>
+          <div style="font-size:1.2rem;"><span style="font-size:1.8rem;">⚡</span> <strong>Texte qui vend</strong> – chaque mot pousse à l'achat</div>
+        </div>
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Dashboard" class="unsplash-img floating-img" style="min-height: 340px;">
+      </div>
+    </div>
+
+    <!-- BÉNÉFICES - fade-up -->
+    <div class="fade-up" id="benefices">
+      <h2 style="margin-bottom: 24px;">AVANTAGES BSC</h2>
+      <div style="display: flex; flex-direction: column; gap: 18px;">
+        <div style="display: flex; align-items: center; gap: 18px; background: #141414; padding: 20px; border-radius: 20px;">
+          <span style="font-size: 2.6rem;">📈</span> <span style="font-weight: 700; font-size:1.25rem;">Vos visiteurs comprennent votre offre du premier coup</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 18px; background: #141414; padding: 20px; border-radius: 20px;">
+          <span style="font-size: 2.6rem;">💸</span> <span style="font-weight: 700; font-size:1.25rem;">Compatible avec vos campagnes Facebook dès le premier jour</span>
+        </div>
+        <img src="https://images.unsplash.com/photo-1553729459-afe8bcdbbbf6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Croissance" class="unsplash-img" style="min-height: 340px;">
+      </div>
+    </div>
+
+    <!-- OFFRE UNIQUE (une seule formule) - zoom-in -->
+    <div class="zoom-in" id="offre">
+      <h2 style="font-size: 2.2rem; margin-bottom: 12px;">🎯 VOTRE ARME DE VENTE</h2>
+      <div style="margin-top: 20px;">
+        <div class="card" style="border-top: 6px solid var(--orange); text-align: left;">
+          <h3 style="color: var(--orange); font-size: 2rem;">💻 Landing Page Professionnelle</h3>
+          <div class="price-tag">À partir de 12 500 FCFA / an</div>
+          <ul style="list-style: none; margin: 24px 0 20px; display: flex; flex-direction: column; gap: 16px;">
+            <li style="font-size:1.1rem;">✅ Page de vente mobile-first</li>
+            <li style="font-size:1.1rem;">✅ CTA WhatsApp direct</li>
+            <li style="font-size:1.1rem;">✅ Livraison en 24-48h</li>
+            <li style="font-size:1.1rem;">✅ Guide : Publicité Facebook (valeur 1 500 FCFA)</li>
+            <li style="font-size:1.1rem;">✅ Guide : Carte virtuelle pour publicité (valeur 2 000 FCFA)</li>
+            <li style="font-size:1.1rem;">✅ Guide : Maîtriser le closing (valeur 3 000 FCFA)</li>
+          </ul>
+          <p style="color: #ccc; margin-bottom: 24px; font-size:1.15rem;"><strong>Valeur totale : 19 000 FCFA</strong><br>→ Vous payez à partir de 12 500 FCFA / an</p>
+          <a href="https://wa.me/22900000000" target="_blank" class="btn btn-primary" style="width: 100%; background: #25D366; box-shadow: 0 10px 20px rgba(37,211,102,0.4); animation: none; font-size:1.3rem;">💬 Je veux ma landing page</a>
+        </div>
+      </div>
+      <p style="margin-top: 20px; background: #1f1f1f; padding: 16px; border-radius: 20px; text-align: center; font-weight: 700; font-size: 1rem;">
+        🛡️ Ajustements inclus pendant 7 jours après livraison.<br>Votre satisfaction est notre priorité.
+      </p>
+    </div>
+
+    <!-- TEMOIGNAAGES - slide-left -->
+    <div class="slide-left" id="social-proof">
+      <h2 style="margin-bottom: 24px; font-size: 2.1rem;">ILS ONT DÉJÀ FRANCHI LE PAS</h2>
+      <div class="card" style="text-align: center;">
+        <p style="font-weight: 800; font-size: 1.3rem; margin-bottom: 16px;">⭐ Chaque page est conçue pour convaincre, pas juste pour exister</p>
+        <img src="https://images.unsplash.com/photo-1603201667141-5a2e4b9b3b1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Clients" class="unsplash-img floating-img" style="min-height: 340px;">
+        
+        <div style="background: #1a1a1a; border-radius: 20px; padding: 18px; margin-top: 16px; margin-bottom: 16px;">
+          <p style="font-style: italic; font-size: 1.1rem;">"Depuis ma landing page, je reçois des messages de gens déjà convaincus. Fini les questions inutiles."</p>
+          <p style="color: var(--orange); margin-top: 8px; font-size: 1rem;">— Awa K., commerçante textile, Ouagadougou</p>
+        </div>
+        <div style="background: #1a1a1a; border-radius: 20px; padding: 18px; margin-bottom: 16px;">
+          <p style="font-style: italic; font-size: 1.1rem;">"La page filtre toute seule les curieux. Je ne parle qu'aux gens prêts à acheter."</p>
+          <p style="color: var(--orange); margin-top: 8px; font-size: 1rem;">— Koffi M., vendeur de compléments alimentaires</p>
+        </div>
+        <div style="background: #1a1a1a; border-radius: 20px; padding: 18px;">
+          <p style="font-style: italic; font-size: 1.1rem;">"En moins d'une semaine, 3 demandes sérieuses. Le rapport qualité-prix est imbattable."</p>
+          <p style="color: var(--orange); margin-top: 8px; font-size: 1rem;">— Salif D., entrepreneur digital, Bobo-Dioulasso</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ enrichie (accordéon) - fade-up -->
+    <div class="fade-up" id="faq">
+      <h2 style="font-size: 2rem;">❓ FAQ</h2>
+      <div style="margin-top: 20px;">
+        <details>
+          <summary>C'est quoi exactement une landing page BSC ?</summary>
+          <div class="faq-body">Une page de vente statique, ultra-rapide, hébergée sur GitHub Pages. Elle présente votre offre, répond aux objections et redirige le prospect directement vers votre WhatsApp.</div>
+        </details>
+        <details>
+          <summary>Quel est le délai de livraison ?</summary>
+          <div class="faq-body">24 à 48 heures après réception de vos informations et du paiement.</div>
+        </details>
+        <details>
+          <summary>Comment je paie ?</summary>
+          <div class="faq-body">Via Orange Money ou Wave. Simple et immédiat.</div>
+        </details>
+        <details>
+          <summary>Est-ce que je peux modifier ma page après livraison ?</summary>
+          <div class="faq-body">Oui. Les ajustements mineurs sont inclus dans les 7 jours suivant la l    }
 
     /* Animations premium lentes (5s) */
     .fade-up {
